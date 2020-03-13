@@ -1,0 +1,99 @@
+openapi: 3.0.0
+# Added by API Auto Mocking Plugin
+servers:
+  - description: SwaggerHub API Auto Mocking
+    url: https://virtserver.swaggerhub.com/poyuH/HW2/1.0.0
+info:
+  description: This is a simple API 
+  version: "1.0.0"
+  title: Simple API
+  contact:
+    email: you@your-company.com
+  license:
+    name: Apache 2.0
+    url: 'http://www.apache.org/licenses/LICENSE-2.0.html'
+
+paths:
+  /doorlock:
+    get:
+      parameters: 
+        - in: query
+          name: otp
+          schema: 
+            $ref: '#/components/schemas/OTP'
+          description: check the OTP and return corresponding visitor
+      responses:
+        '200':
+          description: get the welcome page for individual visitor 
+          content: 
+            applications/json:
+                schema:
+                  $ref: '#/components/schemas/name'
+        '400':
+          description: bad input parameter
+
+  /doorkey:
+    get:
+      operationId: getDoorKey
+      parameters:
+        - in: query
+          name: faceId
+          description: get the dorrkey page of certain faceID
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: get web page
+          content:
+            applications/json:
+              schema:
+                $ref: '#/components/schemas/photoUrl'
+        '400':
+          description: bad input parameter
+    post:
+      summary: allow or deny access
+      description: allow or deny access
+      responses:
+        '200':
+          description: 'succesfully update'
+        '400':
+          description: 'invalid input, object invalid'
+        '409':
+          description: an existing item already exists
+      parameters: 
+      - in: path
+        name: faceId
+        description: allow or denied visitor with faceID
+        required: true
+        schema:
+          $ref: '#/components/schemas/FaceId'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Visitor'
+        description: allow or denied visitor access
+components:
+  schemas:
+    name:
+      type: string
+    OTP:
+      type: string
+    FaceId:
+      type: string
+      format: uuid
+    photoUrl:
+      type: string
+    Visitor:
+      type: object
+      properties:
+        faceId:
+          type: string
+          format: uuid
+        is_granted:
+          type: boolean
+        phoneNumber:
+          type: string
+        name:
+          type: string
