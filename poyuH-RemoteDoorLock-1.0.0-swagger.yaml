@@ -22,6 +22,7 @@ paths:
           schema: 
             $ref: '#/components/schemas/OTP'
           description: check the OTP and return corresponding visitor
+          required: true
       responses:
         '200':
           description: get the welcome page for individual visitor 
@@ -46,7 +47,7 @@ paths:
         '200':
           description: get web page
           content:
-            applications/json:
+            application/json:
               schema:
                 $ref: '#/components/schemas/photoUrl'
         '400':
@@ -62,17 +63,17 @@ paths:
         '409':
           description: an existing item already exists
       parameters: 
-      - in: path
+      - in: query
         name: faceId
         description: allow or denied visitor with faceID
         required: true
         schema:
-          $ref: '#/components/schemas/FaceId'
+          $ref: '#/components/schemas/faceId'
       requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Visitor'
+              $ref: '#/components/schemas/visitor'
         description: allow or denied visitor access
 components:
   schemas:
@@ -80,17 +81,15 @@ components:
       type: string
     OTP:
       type: string
-    FaceId:
+    faceId:
       type: string
-      format: uuid
     photoUrl:
       type: string
-    Visitor:
+    visitor:
       type: object
       properties:
-        faceId:
-          type: string
-          format: uuid
+        faceId: 
+          $ref: '#/components/schemas/faceId'
         is_granted:
           type: boolean
         phoneNumber:
