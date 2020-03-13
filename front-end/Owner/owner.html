@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+	<title>Door Lock demo</title>
+
+  <!-- jQuery -->
+  <script type="text/javascript" src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+
+  <!-- CSS -->
+	<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700">
+	<!--
+     <link rel="stylesheet" type="text/css" href="doorlock.css">
+    -->
+
+  <!-- for API gateway SDK -->
+  <script type="text/javascript" src="lib/axios/dist/axios.standalone.js"></script>
+  <script type="text/javascript" src="lib/CryptoJS/rollups/hmac-sha256.js"></script>
+  <script type="text/javascript" src="lib/CryptoJS/rollups/sha256.js"></script>
+  <script type="text/javascript" src="lib/CryptoJS/components/hmac.js"></script>
+  <script type="text/javascript" src="lib/CryptoJS/components/enc-base64.js"></script>
+  <script type="text/javascript" src="lib/url-template/url-template.js"></script>
+  <script type="text/javascript" src="lib/apiGatewayCore/sigV4Client.js"></script>
+  <script type="text/javascript" src="lib/apiGatewayCore/apiGatewayClient.js"></script>
+  <script type="text/javascript" src="lib/apiGatewayCore/simpleHttpClient.js"></script>
+  <script type="text/javascript" src="lib/apiGatewayCore/utils.js"></script>
+  <script type="text/javascript" src="apigClient.js"></script>
+
+</head>
+
+<body>
+
+	<div class="panel" id="panel">
+        <img src="notfound.jpg" alt="Visitor"  width="200" height="100" id="visitorPhoto" >
+  		<form action="#0" id="owner-decision-form">
+            <input type="radio" id="allow" name="decision" value="allow">
+            <label for="male">Allow</label><br>
+            <input type="radio" id="deny" name="decision" value="deny">
+            <label for="female">Deny</label><br>
+            <input type="submit" value="Submit">
+  		</form>
+	</div>
+  <!-- Interactive Javascript file -->
+  <script type="text/javascript" src="owner.js"></script>
+  
+</body>
+
+</html>
