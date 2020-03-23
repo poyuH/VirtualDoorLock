@@ -31,12 +31,16 @@
 <body>
 
 	<div class="panel" id="panel">
-        <img src="notfound.jpg" alt="Visitor"  width="200" height="100" id="visitorPhoto" >
+        <img src="notfound.jpg" alt="Visitor"  id="visitorPhoto" >
   		<form action="#0" id="owner-decision-form">
+            <input type="text" id="name">
+            <label for="name">Visitor Name</label><br>
+            <input type="text" id="phoneNumber">
+            <label for="phoneNumber">Phone Number</label><br>
             <input type="radio" id="allow" name="decision" value="allow">
-            <label for="male">Allow</label><br>
+            <label for="allow">Allow</label><br>
             <input type="radio" id="deny" name="decision" value="deny">
-            <label for="female">Deny</label><br>
+            <label for="deny">Deny</label><br>
             <input type="submit" value="Submit">
   		</form>
 	</div>
